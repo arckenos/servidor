@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Arcke/OneDrive/Escritorio/Respaldo/Documentos/NetBeansProjects/server/servidor/src/java/servicio/CitasFacadeREST.java</file>
+            <file>file:/C:/Users/Arcke/OneDrive/Escritorio/Respaldo/Documentos/NetBeansProjects/server/servidor/src/java/servicio/AbstractFacade.java</file>
+            <file>file:/C:/Users/Arcke/OneDrive/Escritorio/Respaldo/Documentos/NetBeansProjects/server/servidor/src/java/com/entidades/Citas.java</file>
+            <file>file:/C:/Users/Arcke/OneDrive/Escritorio/Respaldo/Documentos/NetBeansProjects/server/servidor/src/java/servicio/PacienteFacadeREST.java</file>
+            <file>file:/C:/Users/Arcke/OneDrive/Escritorio/Respaldo/Documentos/NetBeansProjects/server/servidor/build/generated-sources/ap-source-output/com/entidades/Expediente_.java</file>
+            <file>file:/C:/Users/Arcke/OneDrive/Escritorio/Respaldo/Documentos/NetBeansProjects/server/servidor/build/generated-sources/ap-source-output/com/entidades/Citas_.java</file>
+        </group>
     </open-files>
 </project-private>

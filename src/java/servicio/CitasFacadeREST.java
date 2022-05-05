@@ -7,6 +7,7 @@ package servicio;
 import com.entidades.Citas;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
@@ -28,18 +29,18 @@ import javax.ws.rs.core.MediaType;
 public class CitasFacadeREST extends AbstractFacade<Citas> {
 
     @PersistenceContext(unitName = "serverPU")
-    private EntityManager em;
+    private EntityManagerFactory emf;
 
     public CitasFacadeREST() {
         super(Citas.class);
-        this.em = Persistence.createEntityManagerFactory("serverPU").createEntityManager(); 
+        this.emf = Persistence.createEntityManagerFactory("serverPU"); 
         
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Citas entity) {
+    public void create(Citas entity) {        
         super.create(entity);
     }
 
@@ -86,7 +87,7 @@ public class CitasFacadeREST extends AbstractFacade<Citas> {
 
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+        return emf.createEntityManager();
     }
     
 }

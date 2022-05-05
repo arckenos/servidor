@@ -5,6 +5,7 @@
 package servicio;
 
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 
 /**
@@ -22,15 +23,54 @@ public abstract class AbstractFacade<T> {
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
-        getEntityManager().persist(entity);
+        EntityManager em = null;
+        
+        try{
+            em = getEntityManager(); 
+            em.getTransaction().begin();
+            em.persist(entity);
+            em.getTransaction().commit();
+            
+        } finally {
+            if(em != null){
+                em.close();
+            }
+        }
     }
 
     public void edit(T entity) {
-        getEntityManager().merge(entity);
-    }
+        EntityManager em = null;
+        try{
+            em = getEntityManager(); 
+            em.getTransaction().begin();
+            getEntityManager().merge(entity);
+            em.getTransaction().commit();
+            
+        } finally {
+            if(em != null){
+                em.close();
+            }         
+    
+        }
+    }    
 
     public void remove(T entity) {
-        getEntityManager().remove(getEntityManager().merge(entity));
+        
+        EntityManager em = null;
+        //Entity ent = em.find(entity.getClass(),en);
+        try{
+            em = getEntityManager(); 
+            em.getTransaction().begin();
+            em.remove(em.merge(entity));
+            em.getTransaction().commit();
+            
+        } finally {
+            if(em != null){
+                em.close();
+            }         
+    
+        }
+        
     }
 
     public T find(Object id) {

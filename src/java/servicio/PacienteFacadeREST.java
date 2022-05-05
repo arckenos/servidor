@@ -7,6 +7,7 @@ package servicio;
 import com.entidades.Paciente;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
@@ -28,11 +29,11 @@ import javax.ws.rs.core.MediaType;
 public class PacienteFacadeREST extends AbstractFacade<Paciente> {
 
     @PersistenceContext(unitName = "serverPU")
-    private EntityManager em;
+    private EntityManagerFactory em;
 
     public PacienteFacadeREST() {
         super(Paciente.class);
-        this.em = Persistence.createEntityManagerFactory("serverPU").createEntityManager();
+        this.em = Persistence.createEntityManagerFactory("serverPU");
     }
 
     @POST
@@ -40,6 +41,7 @@ public class PacienteFacadeREST extends AbstractFacade<Paciente> {
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void create(Paciente entity) {
         super.create(entity);
+        System.out.println("Intentado insertar a "+entity.getNombre());
          
 
     }
@@ -87,7 +89,7 @@ public class PacienteFacadeREST extends AbstractFacade<Paciente> {
 
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+        return em.createEntityManager();
     }
     
 }
